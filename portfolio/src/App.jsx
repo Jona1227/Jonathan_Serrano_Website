@@ -1,7 +1,9 @@
+import HubRoom from './components/HubRoom'
+
 function App() {
   return (
     <div>
-      <h1>Hello</h1>
+      <HubRoom />
     </div>
   )
 }

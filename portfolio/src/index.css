@@ -1,0 +1,76 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background: #000;
+    overflow: hidden;
+  }
+  
+  .room-wrapper {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .room {
+    width: 800px;
+    height: 500px;
+    background: #6b4c3b;
+    border: 24px solid #3a2218;
+    position: relative;
+  }
+
+  .doorTop {
+    width: 60px;
+    height: 40px;
+    background: #1a0a00;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .doorBottom {
+    width: 60px;
+    height: 40px;
+    background: #1a0a00;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .doorLeft {
+    width: 40px;
+    height: 60px;
+    background: #1a0a00;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .doorRight {
+    width: 40px;
+    height: 60px;
+    background: #1a0a00;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .player {
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    image-rendering: pixelated;
+    background-image: url('sprites/Idle.png');
+    background-size: 100% 100%;
+    transform: translate(-50%, -50%)
+  }
