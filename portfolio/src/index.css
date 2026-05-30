@@ -66,11 +66,10 @@
   }
 
   .player {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     position: absolute;
     image-rendering: pixelated;
     background-image: url('sprites/Idle.png');
-    background-size: 100% 100%;
     transform: translate(-50%, -50%)
   }
