@@ -1,10 +1,22 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 function HubRoom() {
   const [playerX, setPlayerX] = useState(380)
   const [playerY, setPlayerY] = useState(230)
   const[isMoving, setIsMoving] = useState(false)
   const [frame, setFrame] = useState(0)
+
+  const playerXRef = useRef(380)
+  const playerYRef = useRef(230)
+
+  const [activeRoom, setActiveRoom] = useState(null)
+
+  const doors = {
+    'bottom': {x: 370, y: 390, width: 60, height: 40},
+    'top': {x: 370, y: 0, width: 60, height: 40},
+    'left':{x: 0, y: 170, width: 40, height: 60},
+    'right': {x: 720, y: 220, width: 40, height: 60},
+  }
 
   const sprites = {
     'down': "/sprites/Foward.png", 
@@ -15,6 +27,13 @@ function HubRoom() {
   }
 
   const [direction, setDirection] = useState('down')
+
+  const checkDoorCollision = (door) => {
+    return playerXRef.current > door.x && 
+           playerXRef.current < door.x + door.width &&
+           playerYRef.current > door.y &&
+           playerYRef.current < door.y + door.height
+  }
 
 
 
@@ -27,23 +46,58 @@ function HubRoom() {
       if(e.key === "s" || e.key === "ArrowDown") {
         setDirection('down')
         setIsMoving(true)
-        setPlayerY(prev => Math.min(410, prev + 5))
+        setPlayerY(prev =>{ const newY = Math.min(410, prev + 5)
+        playerYRef.current = newY
+        return newY
+        })
+
       } else if (e.key === "w" || e.key === "ArrowUp") {
         setDirection('up')
         setIsMoving(true)
-        setPlayerY(prev => Math.max(-5, prev - 5))
+        setPlayerY(prev => { const newY = Math.max(-5, prev - 5)
+        playerYRef.current = newY
+        return newY
+        })
+
       } else if (e.key === "a" || e.key === "ArrowLeft"){
         setDirection('left')
         setIsMoving(true)
-        setPlayerX(prev =>Math.max(15, prev - 5))
+        setPlayerX(prev => {const newX = Math.max(15, prev - 5)
+        playerXRef.current = newX
+        return newX
+        })
+
       } else if ( e.key === "d" || e.key === "ArrowRight"){
         setDirection('right')
         setIsMoving(true)
-        setPlayerX(prev => Math.min(745, prev + 5))
+        setPlayerX(prev => {const newX = Math.min(745, prev + 5)
+        playerXRef.current = newX
+        return newX
+      })
+      }
+      
+      if (checkDoorCollision(doors.top)) { 
+        setActiveRoom('top') 
+      }
+      if (checkDoorCollision(doors.bottom)) { 
+        setActiveRoom('bottom') 
+      }
+      if (checkDoorCollision(doors.left)) {
+        setActiveRoom('left')
+      }
+      if (checkDoorCollision(doors.right)) {
+        setActiveRoom('right')
       }
       
     }
     const handleKeyUp = (e) => {
+      if (e.key === "Escape") {
+        setActiveRoom(null)
+        setPlayerX(380)
+        setPlayerY(220)
+        playerXRef.current = 380
+        playerYRef.current = 220
+      }
       setIsMoving(false)
     }
     window.addEventListener('keyup', handleKeyUp)
@@ -52,7 +106,6 @@ function HubRoom() {
   }, [])
 
   
-  console.log(frame)
     return (
       <div className="room-wrapper">
         <div className="room">
@@ -66,6 +119,7 @@ function HubRoom() {
           backgroundSize: isMoving ? '200% 100%' : '100% 100%',
           backgroundPosition: frame === 0 ? '0% 0%' : '100% 0%'}}></div>
         </div>
+        {activeRoom && <div className="window"> <p>{activeRoom}</p></div>}
       </div>
     )
   }

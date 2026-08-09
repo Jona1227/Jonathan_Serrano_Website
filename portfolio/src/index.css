@@ -73,3 +73,17 @@
     background-image: url('sprites/Idle.png');
     transform: translate(-50%, -50%)
   }
+
+  .window {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:#000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+  }
