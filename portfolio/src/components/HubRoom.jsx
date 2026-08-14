@@ -12,10 +12,9 @@ function HubRoom() {
   const [activeRoom, setActiveRoom] = useState(null)
 
   const doors = {
-    'bottom': {x: 370, y: 390, width: 60, height: 40},
-    'top': {x: 370, y: 0, width: 60, height: 40},
-    'left':{x: 0, y: 170, width: 40, height: 60},
-    'right': {x: 720, y: 220, width: 40, height: 60},
+    'top': {x: 390, y: 40, width: 30, height: 20},
+    'left': {x: 58, y: 220, width: 20, height: 30},
+    'right': {x: 718, y: 225, width: 20, height: 30},
   }
 
   const sprites = {
@@ -46,7 +45,7 @@ function HubRoom() {
       if(e.key === "s" || e.key === "ArrowDown") {
         setDirection('down')
         setIsMoving(true)
-        setPlayerY(prev =>{ const newY = Math.min(410, prev + 5)
+        setPlayerY(prev =>{ const newY = Math.min(400, prev + 5)
         playerYRef.current = newY
         return newY
         })
@@ -54,7 +53,7 @@ function HubRoom() {
       } else if (e.key === "w" || e.key === "ArrowUp") {
         setDirection('up')
         setIsMoving(true)
-        setPlayerY(prev => { const newY = Math.max(-5, prev - 5)
+        setPlayerY(prev => { const newY = Math.max(50, prev - 5)
         playerYRef.current = newY
         return newY
         })
@@ -62,7 +61,7 @@ function HubRoom() {
       } else if (e.key === "a" || e.key === "ArrowLeft"){
         setDirection('left')
         setIsMoving(true)
-        setPlayerX(prev => {const newX = Math.max(15, prev - 5)
+        setPlayerX(prev => {const newX = Math.max(77, prev - 5)
         playerXRef.current = newX
         return newX
         })
@@ -70,7 +69,7 @@ function HubRoom() {
       } else if ( e.key === "d" || e.key === "ArrowRight"){
         setDirection('right')
         setIsMoving(true)
-        setPlayerX(prev => {const newX = Math.min(745, prev + 5)
+        setPlayerX(prev => {const newX = Math.min(720, prev + 5)
         playerXRef.current = newX
         return newX
       })
@@ -78,9 +77,6 @@ function HubRoom() {
       
       if (checkDoorCollision(doors.top)) { 
         setActiveRoom('top') 
-      }
-      if (checkDoorCollision(doors.bottom)) { 
-        setActiveRoom('bottom') 
       }
       if (checkDoorCollision(doors.left)) {
         setActiveRoom('left')
@@ -105,21 +101,37 @@ function HubRoom() {
     window.addEventListener('keydown', handleKeyDown)
   }, [])
 
-  
+
     return (
       <div className="room-wrapper">
+        <div className="hud">
+        <div className="hud-name">
+            <p>Playing as:</p>
+            <p>Jonathan Serrano</p>
+          </div>
+          <div className="hud-hearts">
+            <img src="/sprites/heart.png" />
+            <img src="/sprites/heart.png" />
+            <img src="/sprites/heart.png" />
+          </div>
+        </div>
         <div className="room">
-        <div className="doorTop"></div>
-        <div className="doorLeft"></div>
-        <div className="doorBottom"></div>
-        <div className="doorRight"></div>
         <div className="player" style={{left: playerX, top: playerY, 
           backgroundImage: `url(${isMoving ? sprites[direction] : sprites['idle']})`, 
           transform: direction === 'left' ? 'translate(-50%, -50%) scaleX(-1)' : 'translate(-50%, -50%)',
           backgroundSize: isMoving ? '200% 100%' : '100% 100%',
           backgroundPosition: frame === 0 ? '0% 0%' : '100% 0%'}}></div>
         </div>
-        {activeRoom && <div className="window"> <p>{activeRoom}</p></div>}
+        {activeRoom && <div className="window">  
+          <div className="window-card">
+          <div className="corner tl"></div>
+            <div className="corner tr"></div>
+            <div className="corner bl"></div>
+            <div className="corner br"></div>
+            <p className="window-tag">// ABOUT ME</p>
+            <p>{activeRoom}</p>
+          </div>
+          </div>}
       </div>
     )
   }
