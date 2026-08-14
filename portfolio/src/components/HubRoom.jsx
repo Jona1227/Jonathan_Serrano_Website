@@ -1,3 +1,7 @@
+import About from './About'
+import Projects from './Projects'
+import Contact from './Contact'
+
 import { useState, useEffect, useRef } from 'react'
 
 function HubRoom() {
@@ -23,6 +27,12 @@ function HubRoom() {
     'left':"/sprites/Side.png",
     'right': "/sprites/Side.png",
     'idle': "/sprites/Idle.png"
+  }
+
+  const roomComponents = {
+    'top': <About />,
+    'left': <Projects />,
+    'right': <Contact />
   }
 
   const [direction, setDirection] = useState('down')
@@ -129,7 +139,7 @@ function HubRoom() {
             <div className="corner bl"></div>
             <div className="corner br"></div>
             <p className="window-tag">// ABOUT ME</p>
-            <p>{activeRoom}</p>
+            {roomComponents[activeRoom]}
           </div>
           </div>}
       </div>
