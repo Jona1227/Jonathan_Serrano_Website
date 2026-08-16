@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
 
 
 * {
@@ -36,7 +37,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background:#000;
+    background: #d4c4b0;
     color: #fff;
     display: flex;
     align-items: center;
@@ -45,10 +46,10 @@
     animation: fadeIn 0.4s ease-in-out;
   }
   .window-card {
-    width: 500px;
-    position: relative;
+    background: none;
+    border: none;
     padding: 0;
-    overflow: hidden;
+    position: relative;
   }
 
   .corner {
@@ -58,18 +59,7 @@
     border-color: #c8a96e;
     border-style: solid;
   }
-  
-  .tl { top: -3px; left: -3px; border-width: 2px 0 0 2px; }
-  .tr { top: -3px; right: -3px; border-width: 2px 2px 0 0; }
-  .bl { bottom: -3px; left: -3px; border-width: 0 0 2px 2px; }
-  .br { bottom: -3px; right: -3px; border-width: 0 2px 2px 0; }
-  
-  .window-tag {
-    font-size: 0.65rem;
-    color: #7a5a3a;
-    letter-spacing: .15em;
-    margin-bottom: 0.5rem;
-  }
+
 
   .room {
     width: 800px;
@@ -129,6 +119,110 @@
     color: #2a2a2a;
     line-height: 2rem;
     margin-bottom: 0.5rem;
+  }
+
+  .about-wrapper {
+    position: relative;
+    width: 650px;
+  }
+  
+  .about-main {
+    width: 100%;
+    height: auto;
+    image-rendering: pixelated;
+  }
+  .about-name-note {
+    position: absolute;
+    top: 120px;
+    left: -30px;
+    width: 250px;
+    image-rendering: pixelated;
+    transform: rotate(-5deg);
+  }
+
+  .about-intern-note {
+    position: absolute;
+    bottom: 40px;
+    right: -40px;
+    width: 200px;
+    image-rendering: pixelated;
+    transform: rotate(8deg);
+  }
+  .about-neuralSeek-logo{
+    position: absolute;
+    bottom: 120px;
+    right: 40px;
+    width: 40px;
+    image-rendering: pixelated;
+    transform: rotate(10deg);
+  }
+  .about-esc {
+    position: absolute;
+    top: 10px;
+    left: -35px;
+    width: 85px;
+    image-rendering: pixelated;
+    cursor: pointer;
+    transform: rotate(-10deg)
+  }
+
+  .about-bio {
+    position: absolute;
+    top: 130px;
+    left: 250px;
+    width: 310px;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.0rem;
+    color: #2a1a0e;
+    line-height: 1.6;
+  }
+
+  .about-education {
+    position: absolute;
+    top: 400px;
+    left: 80px;
+    width: 500px;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.2rem;
+    color: #2a1a0e;
+  }
+  
+  .about-education h3 {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+  
+  .edu-entry {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-top: 0.6rem;
+  }
+
+  .about-experience {
+    position: absolute;
+    top: 560px;
+    left: 80px;
+    width: 500px;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.2rem;
+    color: #2a1a0e;
+  }
+  
+  .about-experience h3 {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+  
+  .exp-entry {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-top: 1rem;
   }
 
   @keyframes fadeIn {

@@ -29,8 +29,16 @@ function HubRoom() {
     'idle': "/sprites/Idle.png"
   }
 
+  const closeWindow = () => {
+    setActiveRoom(null)
+    setPlayerX(380)
+    setPlayerY(220)
+    playerXRef.current = 380
+    playerYRef.current = 220
+  }
+
   const roomComponents = {
-    'top': <About />,
+    'top': <About onClose={closeWindow} />,
     'left': <Projects />,
     'right': <Contact />
   }
@@ -134,11 +142,6 @@ function HubRoom() {
         </div>
         {activeRoom && <div className="window">  
           <div className="window-card">
-          <div className="corner tl"></div>
-            <div className="corner tr"></div>
-            <div className="corner bl"></div>
-            <div className="corner br"></div>
-            <p className="window-tag">// ABOUT ME</p>
             {roomComponents[activeRoom]}
           </div>
           </div>}
