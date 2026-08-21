@@ -44,6 +44,7 @@
     justify-content: center;
     z-index: 10;
     animation: fadeIn 0.4s ease-in-out;
+    overflow: auto;
   }
   .window-card {
     background: none;
@@ -225,7 +226,262 @@
     margin-top: 1rem;
   }
 
+  .projects-picker {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    height: 100%;
+  }
+  
+  .file-card {
+    position: relative;
+    width: 360px;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .file-card:hover {
+    transform: scale(1.08);
+  }
+  
+  .file-card-bg {
+    width: 100%;
+    image-rendering: pixelated;
+  }
+  
+  .file-label {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    image-rendering: pixelated;
+  }
+  
+  .file-name {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    image-rendering: pixelated;
+  }
+  
+  .file-mascot {
+    position: absolute;
+    bottom: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+    image-rendering: pixelated;
+  }
+
+  .project-detail {
+    position: relative;
+    width: 1200px;
+  }
+  
+  .project-detail-bg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .project-media {
+    position: absolute;
+    top: 5%;
+    left: 3%;
+    width: 58%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+  
+  .media-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  .media-arrow {
+    background: none;
+    border: none;
+    color: #3a2a1a;
+    font-size: 1.5rem;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  
+  .media-arrow:hover {
+    color: #c8a96e;
+  }
+  .project-info {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    width: 28%;
+    height: 75%;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1rem;
+    color: #2a1a0e;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    overflow: hidden;
+  }
+  
+  .project-role, .project-tech {
+    font-size: 1rem;
+  }
+
+  .project-tech-stack {
+    position: absolute;
+    bottom: 28%;
+    left: 3%;
+    width: 58%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+  .tech-label {
+    width: 290px;
+    image-rendering: pixelated;
+  }
+  
+  .tech-icons {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+  }
+  
+  .tech-icon {
+    width: 90px;
+    height:30px;
+    image-rendering: pixelated;
+  }
+  .project-github {
+    position: absolute;
+    bottom: 5%;
+    left: 10%;
+    width: 110px;
+    height: 110px;
+    cursor: pointer;
+    image-rendering: pixelated;
+  }
+  
+  .project-mascot {
+    position: absolute;
+    bottom: -1%;
+    right: 3%;
+    width: 150px;
+    image-rendering: pixelated;
+  }
+
+  .project-name {
+    position: absolute;
+    bottom: 7%;
+    right: 33%;
+    width: 400px;
+    image-rendering: pixelated;
+  }
+  .project-back {
+    position: absolute;
+    top: -2%;
+    left: -2%;
+    width: 300px;
+    image-rendering: pixelated;
+    cursor: pointer;
+    z-index: 10;
+  }
+  .projects-esc {
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    width: 100px;
+    image-rendering: pixelated;
+    cursor: pointer;
+    transform: rotate(-20deg)
+  }
+  .contact-wrapper {
+    position: relative;
+    width: 700px;
+  }
+  
+  .contact-bg {
+    width: 100%;
+    height: auto;
+    image-rendering: pixelated;
+  }
+  
+  .contact-note {
+    position: absolute;
+    width: 150px;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .contact-note:hover {
+    transform: scale(1.08);
+  }
+  
+  .note-bg {
+    width: 200%;
+    image-rendering: pixelated;
+  }
+  
+  .note-icon {
+    position: absolute;
+    top: 30%;
+    left: 100%;
+    transform: translateX(-50%);
+    width: 150px;
+    image-rendering: pixelated;
+  }
+  
+  .note-email {
+    top: 10%;
+    left: 5%;
+    transform: rotate(-5deg);
+  }
+  
+  .note-linkedin {
+    top: 35%;
+    right: 5%;
+    transform: rotate(4deg);
+  }
+  
+  .note-github {
+    bottom: 15%;
+    left: 10%;
+    transform: rotate(-3deg);
+  }
+  .contact-title {
+    position: absolute;
+    top: 10%;
+    right: 2%;
+    width: 350px;
+    image-rendering: pixelated;
+  }
+  
+  .contact-esc {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 80px;
+    image-rendering: pixelated;
+    cursor: pointer;
+  }
+
   @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
+  }
+  .projects-picker:hover .file-card:not(:hover) {
+    filter: brightness(0.6);
+    transform: scale(0.95);
   }

@@ -39,8 +39,8 @@ function HubRoom() {
 
   const roomComponents = {
     'top': <About onClose={closeWindow} />,
-    'left': <Projects />,
-    'right': <Contact />
+    'right': <Projects onClose={closeWindow} />,
+    'left': <Contact onClose={closeWindow} />
   }
 
   const [direction, setDirection] = useState('down')
