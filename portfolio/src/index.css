@@ -44,7 +44,12 @@
     justify-content: center;
     z-index: 10;
     animation: fadeIn 0.4s ease-in-out;
-    overflow: auto;
+    overflow: hidden;
+  }
+  .scale-to-fit {
+    width: max-content;
+    flex-shrink: 0;
+    transform-origin: center center;
   }
   .window-card {
     background: none;

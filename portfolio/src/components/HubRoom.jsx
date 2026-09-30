@@ -1,6 +1,7 @@
 import About from './About'
 import Projects from './Projects'
 import Contact from './Contact'
+import ScaleToFit from './ScaleToFit'
 
 import { useState, useEffect, useRef } from 'react'
 
@@ -122,6 +123,7 @@ function HubRoom() {
 
     return (
       <div className="room-wrapper">
+        <ScaleToFit>
         <div className="hud">
         <div className="hud-name">
             <p>Playing as:</p>
@@ -140,10 +142,13 @@ function HubRoom() {
           backgroundSize: isMoving ? '200% 100%' : '100% 100%',
           backgroundPosition: frame === 0 ? '0% 0%' : '100% 0%'}}></div>
         </div>
+        </ScaleToFit>
         {activeRoom && <div className="window">  
-          <div className="window-card">
-            {roomComponents[activeRoom]}
-          </div>
+          <ScaleToFit margin={0.9}>
+            <div className="window-card">
+              {roomComponents[activeRoom]}
+            </div>
+          </ScaleToFit>
           </div>}
       </div>
     )
