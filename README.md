@@ -31,7 +31,6 @@ All the pixel art, sprites, and interface graphics were drawn by me.
 You need [Node.js](https://nodejs.org) 20.19 or newer.
 
 ```bash
-cd portfolio
 npm install
 npm run dev
 ```
@@ -40,7 +39,7 @@ npm run dev
 ## Project structure
 
 ```
-portfolio/
+Jonathan_Serrano_Website/
 ├── public/                 # Images, served as-is
 │   ├── room.png            # Hub room background
 │   ├── sprites/            # Player animation frames and HUD hearts
