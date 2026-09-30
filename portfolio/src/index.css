@@ -28,7 +28,8 @@
     position: absolute;
     image-rendering: pixelated;
     background-image: url('sprites/Idle.png');
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%);
+    pointer-events: none;
   }
 
   .window {
@@ -75,6 +76,22 @@
     image-rendering: pixelated;
     position: relative;
     user-select: none;
+  }
+
+  .room-hotspot {
+    position: absolute;
+    background: transparent;
+    border: 2px dashed transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+  }
+
+  .room-hotspot:hover,
+  .room-hotspot:focus-visible {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.35);
+    outline: none;
   }
 
   .hud {

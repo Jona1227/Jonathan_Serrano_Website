@@ -22,6 +22,12 @@ function HubRoom() {
     'right': {x: 718, y: 225, width: 20, height: 30},
   }
 
+  const labelHotspots = {
+    'top': {label: 'About Me', x: 358, y: 70, width: 90, height: 52},
+    'left': {label: 'Get In Touch', x: 72, y: 230, width: 98, height: 50},
+    'right': {label: 'Projects', x: 632, y: 234, width: 100, height: 40},
+  }
+
   const sprites = {
     'down': "/sprites/Foward.png", 
     'up': "/sprites/Backward.png",
@@ -136,6 +142,11 @@ function HubRoom() {
           </div>
         </div>
         <div className="room">
+        {Object.entries(labelHotspots).map(([room, spot]) => (
+          <button key={room} className="room-hotspot" aria-label={spot.label}
+            style={{left: spot.x, top: spot.y, width: spot.width, height: spot.height}}
+            onClick={() => setActiveRoom(room)} />
+        ))}
         <div className="player" style={{left: playerX, top: playerY, 
           backgroundImage: `url(${isMoving ? sprites[direction] : sprites['idle']})`, 
           transform: direction === 'left' ? 'translate(-50%, -50%) scaleX(-1)' : 'translate(-50%, -50%)',
